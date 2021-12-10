@@ -1,0 +1,5 @@
+Version: 1.0.0
+Settings:
+  Isprepared: true
+  Loglevel: 5
+  Welmsg: '欢迎光临'
