@@ -1,7 +1,7 @@
 package com.event;
 
 import com.util.ConfigFactory;
-import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.ChatColor;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
@@ -14,7 +14,7 @@ public class welcomeMsg implements Listener {
     public void onPlayerJoin(PlayerJoinEvent event) {
 
         String msg = ConfigFactory.getConfig().getString("Settings.Welmsg");
-        event.getPlayer().sendMessage(msg);
+        event.getPlayer().sendMessage(ChatColor.translateAlternateColorCodes('&', msg));
 
     }
 }
