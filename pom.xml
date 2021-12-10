@@ -27,6 +27,7 @@
                     <source>${java.version}</source>
                     <target>${java.version}</target>
                 </configuration>
+
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -43,10 +44,15 @@
                         </configuration>
                     </execution>
                 </executions>
+
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>2.3.1</version>
                 <configuration>
                     <outputDirectory>H:\高版本服务器筹划\1.17 插件测试\plugins</outputDirectory>
                 </configuration>
-
             </plugin>
 
         </plugins>
