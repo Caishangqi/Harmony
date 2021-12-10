@@ -1,8 +1,11 @@
 package com;
 
+import com.command.harmonyCommand;
 import com.util.ConfigFactory;
+import com.util.commandRegister;
 import com.util.eventRegister;
 import me.wolfyscript.utilities.api.WolfyUtilities;
+import me.wolfyscript.utilities.api.chat.Chat;
 import org.bukkit.ChatColor;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -14,6 +17,8 @@ public final class harmony extends JavaPlugin {
     public harmony() {
         super();
         wolfyUtilitiesApi = WolfyUtilities.get(this, false);
+        Chat chat = wolfyUtilitiesApi.getChat();
+        chat.setInGamePrefix("§7[§3调和§7] ");
 
     }
 
@@ -29,7 +34,8 @@ public final class harmony extends JavaPlugin {
 
         //注册指令注册器
         //注册事件注册器
-        new eventRegister(this).RegisterEvent().RegisterCommand();
+        new eventRegister(this).RegisterEvent();
+        new commandRegister(this).RegisterCommand();
 
         //注册依赖
         this.wolfyUtilitiesApi.initialize();

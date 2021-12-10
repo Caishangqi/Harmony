@@ -9,7 +9,6 @@ import org.bukkit.event.player.PlayerJoinEvent;
 
 public class welcomeMsg implements Listener {
 
-
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent event) {
 
