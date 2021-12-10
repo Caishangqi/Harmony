@@ -1,5 +1,9 @@
 # Harmony
-让服务器更协调
+<p align="center">
+<img src = "https://user-images.githubusercontent.com/39553613/145566584-494920e6-bdac-4c23-985d-9d00187c90e1.jpg">
+</p>
+
+<h4 align="center">为什么不写一个可以整合许多相同功能的插件呢 ?</h4>
 
 <p align="center">
 <img alt="CodeFactor Grade" src="https://img.shields.io/codefactor/grade/github/Caishangqi/Harmony">
