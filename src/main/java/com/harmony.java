@@ -1,15 +1,21 @@
 package com;
 
-import com.event.welcomeMsg;
 import com.util.ConfigFactory;
-import com.util.commandRegister;
 import com.util.eventRegister;
-import org.bukkit.Bukkit;
+import me.wolfyscript.utilities.api.WolfyUtilities;
 import org.bukkit.ChatColor;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class harmony extends JavaPlugin {
     public ConfigFactory configFactory;
+    private final WolfyUtilities wolfyUtilitiesApi;
+
+    //插件默认的构造器
+    public harmony() {
+        super();
+        wolfyUtilitiesApi = WolfyUtilities.get(this, false);
+
+    }
 
 
     @Override
@@ -24,6 +30,9 @@ public final class harmony extends JavaPlugin {
         //注册指令注册器
         //注册事件注册器
         new eventRegister(this).RegisterEvent().RegisterCommand();
+
+        //注册依赖
+        this.wolfyUtilitiesApi.initialize();
 
     }
 
