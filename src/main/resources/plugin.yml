@@ -1,8 +1,8 @@
 name: Harmony
 version: '${project.version}'
-main: com.caizii
+main: com.harmony
 api-version: 1.17
-prefix: [ Harmony ]
+prefix: Harmony
 load: STARTUP
 authors: [ Caizii ]
 description: 调整一个服务器，从各个方面
