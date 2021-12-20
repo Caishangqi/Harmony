@@ -6,6 +6,8 @@ import com.harmony;
 //事件注册器，用来集中注册事件
 public class eventRegister extends commandRegister {
 
+    public harmony plugin;
+
     public eventRegister(harmony plugin){
         this.plugin = plugin;
     }

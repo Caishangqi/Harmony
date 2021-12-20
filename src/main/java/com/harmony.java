@@ -1,7 +1,7 @@
 package com;
 
-import com.command.harmonyCommand;
 import com.util.ConfigFactory;
+import com.util.DateLogger;
 import com.util.commandRegister;
 import com.util.eventRegister;
 import me.wolfyscript.utilities.api.WolfyUtilities;
@@ -29,6 +29,10 @@ public final class harmony extends JavaPlugin {
         System.out.println(ChatColor.translateAlternateColorCodes('&', "&7&l[&2+&7] &f加载成功"));
         //注册默认Config,没有的话创建一个
         saveDefaultConfig();
+
+        //注册自定义config
+        this.saveResource("settings.yml", true);
+        new DateLogger(this).modifyDateByDefault();
         //注册配置工厂
         configFactory = new ConfigFactory(this);
 
