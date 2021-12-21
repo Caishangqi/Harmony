@@ -13,6 +13,7 @@ public class harmonyCommand implements CommandExecutor {
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
         if (sender instanceof Player) {
+
             String Version = ConfigFactory.getConfig().getString("Version");
             String Author = "Caizii";
             String Description = "为什么不把许多共同的插件整合在一起呢？";

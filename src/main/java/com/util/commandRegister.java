@@ -1,5 +1,6 @@
 package com.util;
 
+import com.command.GameOverCommand;
 import com.command.harmonyCommand;
 import com.harmony;
 
@@ -19,6 +20,7 @@ public class commandRegister {
         System.out.println("指令模块开始注册");
 //        plugin.getCommand("vault").setExecutor(new VaultCommand());
         plugin.getCommand("harmony").setExecutor(new harmonyCommand());
+        plugin.getCommand("gameover").setExecutor(new GameOverCommand());
         System.out.println("指令模块注册完毕");
     }
 }

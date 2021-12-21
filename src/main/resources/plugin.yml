@@ -11,3 +11,7 @@ commands:
   harmony:
     description: 查看插件基本信息
     usage: /<command>
+
+  gameover:
+    description: 执行自定义游戏事件
+    usage: /<command>

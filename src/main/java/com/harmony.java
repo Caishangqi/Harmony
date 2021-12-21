@@ -10,6 +10,7 @@ import org.bukkit.ChatColor;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class harmony extends JavaPlugin {
+
     public ConfigFactory configFactory; //配置工厂 自制
     private final WolfyUtilities wolfyUtilitiesApi; //WolfyUtilities API
 
