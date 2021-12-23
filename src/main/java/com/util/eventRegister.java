@@ -21,6 +21,7 @@ public class eventRegister extends commandRegister {
         plugin.getServer().getPluginManager().registerEvents(new AccessoryEquipEvent(), plugin);
         plugin.getServer().getPluginManager().registerEvents(new AccessoryDismountEvent(), plugin);
         plugin.getServer().getPluginManager().registerEvents(new PlayerDeathListeners(), plugin);
+        plugin.getServer().getPluginManager().registerEvents(new JoinCheck(), plugin);
         System.out.println("事件模块注册完毕");
     }
 
