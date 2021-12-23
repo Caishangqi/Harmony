@@ -51,14 +51,34 @@ public class JoinCheck implements Listener {
         Iterator<Map.Entry<String, ItemStack>> iterator = accessorySlot.entrySet().iterator();
         while (iterator.hasNext()) {
             Map.Entry<String, ItemStack> entry = iterator.next();
-            if (entry.getValue().getType() == Material.AIR ) {
+            if (entry.getValue() == null) {
 
                 //TODO 如果是空的，根据KEY来指定不同的Slot
+                if (entry.getKey().equals("ring")) {
+                    ringItem = new RingSlot().showRingSlot();
+                }
+
+                if (entry.getKey().equals("curios")) {
+                    curiosItem = new CuriosSlot().showCurioSlot();
+                }
+
+                if (entry.getKey().equals("bracelet")) {
+                    braceletItem = new BraceletSlot().showBraceletSlot();
+                }
+
+                if (entry.getKey().equals("amuletItem")) {
+                    amuletItem = new AmuletsSlot().showAmuletSlot();
+                }
 
             }
-            
+
 
         }
+
+        playerInventory.setItem(9, ringItem);
+        playerInventory.setItem(10, curiosItem);
+        playerInventory.setItem(11, braceletItem);
+        playerInventory.setItem(12, amuletItem);
 
 
     }
