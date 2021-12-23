@@ -87,6 +87,7 @@ public class AccessoryEquipEvent implements Listener {
              * 如果玩家点击背包任何格子开始检测，如果当前物品
              * 有nbt标签 "accessory" 说明这是一个饰品栏
              */
+
             if (new NBTItem((event.getCurrentItem())).hasKey("accessory")) {
 
                 //获取当你把物品拖到指定槽位光标上的物品
@@ -96,6 +97,8 @@ public class AccessoryEquipEvent implements Listener {
                 if (ringSlot.getValidRing().contains(itemOnCursor)) {
 
                     event.setCurrentItem(new ItemStack(Material.AIR)); //删除原本槽位限制图标，把光标上的物品放入
+
+                    //TODO 看看能不能用view做出来拖拽阻塞栏位防止凋落物进入物品栏
 
                 } else { //如果不是Ring中指定的物品类型
                     event.setCancelled(true); //取消点击动作

@@ -80,7 +80,6 @@ public class JoinCheck implements Listener {
         playerInventory.setItem(11, braceletItem);
         playerInventory.setItem(12, amuletItem);
 
-
     }
 
 
