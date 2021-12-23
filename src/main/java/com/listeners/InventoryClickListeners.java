@@ -2,7 +2,9 @@ package com.listeners;
 
 import com.slot.RingSlot;
 import de.tr7zw.changeme.nbtapi.NBTItem;
-import org.apache.commons.lang.ObjectUtils;
+import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
+import org.bukkit.GameMode;
 import org.bukkit.Material;
 import org.bukkit.entity.HumanEntity;
 import org.bukkit.entity.Player;
@@ -13,11 +15,39 @@ import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.inventory.InventoryView;
 import org.bukkit.inventory.ItemStack;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class InventoryClickListeners implements Listener {
 
+
+    List<Integer> accessorySlot = new ArrayList<>();
+
+    {
+
+        accessorySlot.add(9);
+        accessorySlot.add(10);
+        accessorySlot.add(11);
+        accessorySlot.add(12);
+
+    }
+
     @EventHandler
     public void onInventoryClick(InventoryClickEvent event) {
+
+        if (event.getWhoClicked().getGameMode() == GameMode.CREATIVE) {
+
+            if (accessorySlot.contains(event.getSlot())) {
+
+
+                Player whoClicked = (Player) event.getWhoClicked();
+                whoClicked.sendMessage(ChatColor.translateAlternateColorCodes('&', "&7创造模式无法打开配饰物品栏"));
+
+                //TODO 把创造模式和生存模式的物品暂时存起来，序列化，在不同游戏模式下切换回来。
+            }
+
+        }
 
         /*
          * 修复NPE屏幕外点击以及物品栏内部空物品
