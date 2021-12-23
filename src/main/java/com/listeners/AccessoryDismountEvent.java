@@ -16,15 +16,15 @@ public class AccessoryDismountEvent implements Listener {
     @EventHandler(priority = EventPriority.LOW)
     public void onAccessoryDismount(InventoryClickEvent event) {
 
-        if (event.getClickedInventory().getType().equals(InventoryType.PLAYER)) {
+        /*
+         * 修复NPE屏幕外点击以及物品栏内部空物品
+         * */
+        if (event.getClickedInventory() == null || event.getCurrentItem().getType() == Material.AIR) {
+            System.out.println("空的");
+            return;
+        }
 
-            /*
-             * 修复NPE屏幕外点击以及物品栏内部空物品
-             * */
-            if (event.getClickedInventory() == null || event.getCurrentItem().getType() == Material.AIR) {
-                System.out.println("空的");
-                return;
-            }
+        if (event.getClickedInventory().getType().equals(InventoryType.PLAYER)) {
 
 
             /**

@@ -27,16 +27,18 @@ public class PlayerDeathListeners implements Listener {
         ItemStack item3 = event.getPlayer().getInventory().getItem(11);
         ItemStack item4 = event.getPlayer().getInventory().getItem(12);
 
+        event.getDrops().remove(item1);
+        event.getDrops().remove(item2);
+        event.getDrops().remove(item3);
+        event.getDrops().remove(item4);
+
         List<ItemStack> itemsToKeep = event.getItemsToKeep();
         itemsToKeep.add(item1);
         itemsToKeep.add(item2);
         itemsToKeep.add(item3);
         itemsToKeep.add(item4);
 
-        event.getDrops().remove(item1);
-        event.getDrops().remove(item2);
-        event.getDrops().remove(item3);
-        event.getDrops().remove(item4);
+
 
         System.out.println(item1.getType());
 
