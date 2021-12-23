@@ -1,5 +1,8 @@
 package com.listeners;
 
+import com.slot.AmuletsSlot;
+import com.slot.BraceletSlot;
+import com.slot.CuriosSlot;
 import com.slot.RingSlot;
 import de.tr7zw.changeme.nbtapi.NBTItem;
 import org.bukkit.Bukkit;
@@ -22,6 +25,11 @@ import java.util.List;
 public class InventoryClickListeners implements Listener {
 
 
+    private RingSlot ringSlot;
+    private CuriosSlot curiosSlot;
+    private BraceletSlot braceletSlot;
+    private AmuletsSlot amuletsSlot;
+
     List<Integer> accessorySlot = new ArrayList<>();
 
     {
@@ -30,6 +38,11 @@ public class InventoryClickListeners implements Listener {
         accessorySlot.add(10);
         accessorySlot.add(11);
         accessorySlot.add(12);
+
+        ringSlot = new RingSlot();
+        curiosSlot = new CuriosSlot();
+        braceletSlot = new BraceletSlot();
+        amuletsSlot = new AmuletsSlot();
 
     }
 
@@ -77,23 +90,18 @@ public class InventoryClickListeners implements Listener {
              */
             if (new NBTItem((event.getCurrentItem())).hasKey("accessory")) {
 
-                //新建一个 Ring栏位 这个应该写在这个类的成员变量的
-                RingSlot ringSlot = new RingSlot();
                 //获取当你把物品拖到指定槽位光标上的物品
                 Material itemOnCursor = event.getWhoClicked().getItemOnCursor().getType();
 
                 //如果这个光标上的物品符合Ring 中指定的物品类型
                 if (ringSlot.getValidRing().contains(itemOnCursor)) {
 
-                    //不要锁定背包栏
-                    event.setCancelled(false); //废物代码
                     event.setCurrentItem(new ItemStack(Material.AIR)); //删除原本槽位限制图标，把光标上的物品放入
 
                 } else { //如果不是Ring中指定的物品类型
                     event.setCancelled(true); //取消点击动作
                     System.out.println("这个物品不是Ring类型的物品"); //Debug信息
                 }
-
 
             }
 
@@ -110,7 +118,6 @@ public class InventoryClickListeners implements Listener {
                 InventoryView view = event.getView(); //新建一个View
                 view.setCursor(new RingSlot().showRingSlot()); //让View的光标物品是Ring格子
                 event.getClickedInventory().setItem(9, currentItem); //真实物品栏中设置当前点击格子为储存的装备
-
 
             }
 

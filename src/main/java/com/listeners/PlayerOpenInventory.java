@@ -28,11 +28,11 @@ public class PlayerOpenInventory implements Listener {
 
         NBTItem ring = new NBTItem(new ItemStack(Material.SNOWBALL));
 
-
         player.getInventory().setItem(9, new RingSlot().showRingSlot());
         player.getInventory().setItem(10, new AmuletsSlot().showAmuletSlot());
         player.getInventory().setItem(11, new BraceletSlot().showBraceletSlot());
         player.getInventory().setItem(12, new CuriosSlot().showCurioSlot());
+
     }
 
 }
