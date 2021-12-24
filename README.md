@@ -12,3 +12,12 @@
 <img alt="GitHub branch checks state" src="https://img.shields.io/github/checks-status/Caishangqi/Harmony/master?label=build">
 <img alt="GitHub code size in bytes" src="https://img.shields.io/github/languages/code-size/Caishangqi/Harmony">
 </p>
+
+
+
+
+### 模块：协调饰品 Harmony Slot
+**介绍**: 该模块以物品栏 9,10,11,12 作为饰品栏，只有指定类型的物品才能放入。四种类型的饰品分别为: `RingSlot` 戒指栏，`CuriosSlot` 珍品栏，`BraceletSlot` 手镯栏 以及 `AmuletsSlot` 项链栏。
+
+**Demo类型**：该版本配置了 _粘液球_ 和 _金粒_ 作为`RingSlot`类型的物品，左键装备该物品，右键卸除装备，该版本下的插件默认不会掉落饰品。
+
