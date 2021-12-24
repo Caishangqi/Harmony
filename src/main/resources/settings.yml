@@ -9,3 +9,8 @@
 #
 
 generate_date:
+
+#是否启用饰品栏 (需要重启)
+accessory_slot:
+  enable: false #true 启用demo饰品栏
+

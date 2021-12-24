@@ -6,6 +6,7 @@ import com.util.commandRegister;
 import com.util.eventRegister;
 import me.wolfyscript.utilities.api.WolfyUtilities;
 import me.wolfyscript.utilities.api.chat.Chat;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -44,6 +45,10 @@ public final class harmony extends JavaPlugin {
 
         //注册依赖
         this.wolfyUtilitiesApi.initialize();
+
+        //配置中心
+
+
 
     }
 

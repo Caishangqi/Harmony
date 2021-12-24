@@ -2,8 +2,10 @@ package com.util;
 
 import com.harmony;
 import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.configuration.file.YamlConfiguration;
 import org.jetbrains.annotations.NotNull;
 
+import java.io.File;
 import java.util.ResourceBundle;
 
 //// 读取配置文件
@@ -29,4 +31,14 @@ public class ConfigFactory {
     public static FileConfiguration getConfig() {
         return plugin.getConfig();
     }
+
+    public YamlConfiguration getSettings() {
+
+        File settingFile = new File(plugin.getDataFolder(), "settings.yml");
+        YamlConfiguration settingFileYaml = YamlConfiguration.loadConfiguration(settingFile);
+
+        return settingFileYaml;
+
+    }
+
 }

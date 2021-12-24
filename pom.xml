@@ -10,6 +10,11 @@
     <packaging>jar</packaging>
 
     <name>Harmony</name>
+    <!--
+
+    基于 : https://git.lumine.io/mythiccraft/mmoinventory/-/wikis/home
+
+    -->
 
     <description>调整一个服务器，从各个方面</description>
     <properties>
