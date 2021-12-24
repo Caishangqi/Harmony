@@ -1,18 +1,52 @@
 package com.listeners;
 
+import com.slot.AmuletsSlot;
+import com.slot.BraceletSlot;
+import com.slot.CuriosSlot;
 import com.slot.RingSlot;
 import org.bukkit.Material;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
+import org.bukkit.event.inventory.ClickType;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.InventoryView;
 import org.bukkit.inventory.ItemStack;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class AccessoryDismountEvent implements Listener {
 
+    private RingSlot ringSlot;
+    private CuriosSlot curiosSlot;
+    private BraceletSlot braceletSlot;
+    private AmuletsSlot amuletsSlot;
+
+    List<Integer> accessorySlot = new ArrayList<>();
+
+    List<ItemStack> slotItems = new ArrayList<>();
+
+    {
+
+        accessorySlot.add(9);
+        accessorySlot.add(10);
+        accessorySlot.add(11);
+        accessorySlot.add(12);
+
+        ringSlot = new RingSlot();
+        curiosSlot = new CuriosSlot();
+        braceletSlot = new BraceletSlot();
+        amuletsSlot = new AmuletsSlot();
+
+        slotItems.add(ringSlot.showRingSlot());
+        slotItems.add(curiosSlot.showCurioSlot());
+        slotItems.add(braceletSlot.showBraceletSlot());
+        slotItems.add(amuletsSlot.showAmuletSlot());
+
+    }
 
     @EventHandler(priority = EventPriority.LOW)
     public void onAccessoryDismount(InventoryClickEvent event) throws InterruptedException {
@@ -32,19 +66,42 @@ public class AccessoryDismountEvent implements Listener {
              * 装备取出逻辑，如果点击的是RingSlot 默认配了 9 坐标格子
              * 并且点击的不是空格并且不是雪球 (默认格子)
              */
+            if (accessorySlot.contains(event.getSlot())) {
+
+                //如果是空鼠标指针的装备卸载
+                if (event.getClick() == ClickType.RIGHT && event.getCursor().getType() == Material.AIR) {
 
 
-            if (event.getSlot() == 9 && event.getCurrentItem().getType() != Material.AIR && event.getCurrentItem().getType() != Material.SNOWBALL) {
+                    ItemStack currentItem = event.getCurrentItem();
+                    InventoryView view = event.getView(); //新建一个View
+                    view.setCursor(currentItem); //让View的光标物品是Ring格子
+                    event.getClickedInventory().setItem(event.getSlot(), slotItems.get(1)); //真实物品栏中设置当前点击格子为储存的装备
 
-                //把当前装备上的物品存入变量
-                ItemStack currentItem = event.getCurrentItem();
-                System.out.println("当前点击的物品是: " + event.getCurrentItem().getType()); //Debug信息
-                System.out.println("当前光标的物品是: " + event.getCursor().getType()); //Debug信息
-                InventoryView view = event.getView(); //新建一个View
-                view.setCursor(new RingSlot().showRingSlot()); //让View的光标物品是Ring格子
-                event.getClickedInventory().setItem(9, currentItem); //真实物品栏中设置当前点击格子为储存的装备
+
+                }
+
+                //TODO slotItems.contains()可以写成是否为空 节省内存
+                //如果鼠标指针上有物品
+
+                if (ringSlot.getValidRing().contains(event.getCursor()) && event.getClick() == ClickType.RIGHT && !slotItems.contains(event.getCurrentItem())) {
+
+                    event.setCancelled(false);
+                }
 
             }
+
+
+//            if (event.getSlot() == 9 && event.getCurrentItem().getType() != Material.AIR && event.getCurrentItem().getType() != Material.SNOWBALL) {
+//
+//                //把当前装备上的物品存入变量
+//                ItemStack currentItem = event.getCurrentItem();
+//                System.out.println("当前点击的物品是: " + event.getCurrentItem().getType()); //Debug信息
+//                System.out.println("当前光标的物品是: " + event.getCursor().getType()); //Debug信息
+//                InventoryView view = event.getView(); //新建一个View
+//                view.setCursor(new RingSlot().showRingSlot()); //让View的光标物品是Ring格子
+//                event.getClickedInventory().setItem(9, currentItem); //真实物品栏中设置当前点击格子为储存的装备
+//
+//            }
 
         }
     }

@@ -12,6 +12,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
+import org.bukkit.event.inventory.ClickType;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.inventory.InventoryView;
@@ -30,7 +31,7 @@ public class AccessoryEquipEvent implements Listener {
     private AmuletsSlot amuletsSlot;
 
     List<Integer> accessorySlot = new ArrayList<>();
-
+    List<ItemStack> slotItems = new ArrayList<>();
     {
 
         accessorySlot.add(9);
@@ -42,6 +43,11 @@ public class AccessoryEquipEvent implements Listener {
         curiosSlot = new CuriosSlot();
         braceletSlot = new BraceletSlot();
         amuletsSlot = new AmuletsSlot();
+
+        slotItems.add(ringSlot.showRingSlot());
+        slotItems.add(curiosSlot.showCurioSlot());
+        slotItems.add(braceletSlot.showBraceletSlot());
+        slotItems.add(amuletsSlot.showAmuletSlot());
 
     }
 
@@ -83,18 +89,18 @@ public class AccessoryEquipEvent implements Listener {
             ItemStack cursor = whoClicked.getItemOnCursor();
             System.out.println(cursor.getType());
 
+
             /**
-             * 如果玩家点击背包任何格子开始检测，如果当前物品
-             * 有nbt标签 "accessory" 说明这是一个饰品栏
+             * 如果点击的背包栏是 9 10 11 12 则判定为饰品栏
              */
 
-            if (new NBTItem((event.getCurrentItem())).hasKey("accessory")) {
+            if (accessorySlot.contains(event.getSlot())) {
 
                 //获取当你把物品拖到指定槽位光标上的物品
                 Material itemOnCursor = event.getWhoClicked().getItemOnCursor().getType();
 
-                //如果这个光标上的物品符合Ring 中指定的物品类型
-                if (ringSlot.getValidRing().contains(itemOnCursor)) {
+                //如果这个光标上的物品符合Ring 中指定的物品类型 (原槽位栏没有物品时)
+                if (ringSlot.getValidRing().contains(itemOnCursor) && event.getClick() == ClickType.LEFT && slotItems.contains(event.getCurrentItem())) {
 
                     event.setCurrentItem(new ItemStack(Material.AIR)); //删除原本槽位限制图标，把光标上的物品放入
 
@@ -105,8 +111,13 @@ public class AccessoryEquipEvent implements Listener {
                     System.out.println("这个物品不是Ring类型的物品"); //Debug信息
                 }
 
-            }
+                //如果这个光标上的物品符合Ring 中指定的物品类型 (原槽位栏有物品时)
 
+                if (ringSlot.getValidRing().contains(itemOnCursor) && event.getClick() == ClickType.LEFT && !slotItems.contains(event.getCurrentItem())) {
+
+                    event.setCancelled(false);
+                }
+            }
 
 
             /**

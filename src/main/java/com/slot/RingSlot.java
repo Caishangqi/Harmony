@@ -15,6 +15,7 @@ public class RingSlot {
 
     public RingSlot() {
         validRing.add(Material.GOLD_NUGGET);
+        validRing.add(Material.SLIME_BALL);
     }
 
     public ItemStack showRingSlot() {
