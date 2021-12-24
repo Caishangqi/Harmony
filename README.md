@@ -21,3 +21,4 @@
 
 **Demo类型**：该版本配置了 _粘液球_ 和 _金粒_ 作为`RingSlot`类型的物品，左键装备该物品，右键卸除装备，该版本下的插件默认不会掉落饰品。
 
+![插件demo](https://user-images.githubusercontent.com/39553613/147332281-07ccc95b-0032-486d-b210-5a430d7767ff.gif) 
